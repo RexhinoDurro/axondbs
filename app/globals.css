@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background: #FFFFFF;
+  color: #0F172A;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 17px;
+  line-height: 1.6;
+  color: #334155;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0F172A;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+::selection {
+  background: #635BFF;
+  color: #FFFFFF;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border: 3px solid #FFFFFF;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #635BFF 0%, #8B5CF6 50%, #EC4899 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .mask-fade-x {
+    mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  }
+
+  @keyframes marquee-x {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    animation: marquee-x 40s linear infinite;
+    will-change: transform;
+  }
+
+  .hero-bg {
+    background:
+      radial-gradient(ellipse 60% 50% at 15% 0%, rgba(99,91,255,0.16) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 45% at 85% 10%, rgba(236,72,153,0.13) 0%, transparent 65%),
+      radial-gradient(ellipse 80% 40% at 50% 100%, rgba(139,92,246,0.10) 0%, transparent 70%),
+      #FFFFFF;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(15,23,42,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15,23,42,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
